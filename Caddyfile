@@ -1,0 +1,28 @@
+# ==============================================================================
+# Kalaivani Sainik Academy — Production Caddyfile
+# Automated HTTPS (Let's Encrypt / ZeroSSL), HTTP/2, HTTP/3, and Reverse Proxy
+# ==============================================================================
+
+{
+    email {$ACME_EMAIL:admissions@kalaivanisainikcoachingcentre.org.in}
+}
+
+# Domain name configured via DOMAIN_NAME environment variable (defaults to localhost)
+{$DOMAIN_NAME:localhost} {
+    # Reverse proxy to Next.js container
+    reverse_proxy web:3000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    # High performance compression
+    encode zstd gzip
+
+    # Log requests
+    log {
+        output stdout
+        format console
+    }
+}

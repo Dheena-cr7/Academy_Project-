@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 import { normalizeIndianPhoneNumber, generateId } from '@/lib/utils';
+import { dispatchLeadNotification } from '@/lib/notifications';
 
 // Simple in-memory rate limiting map for form submissions (5 requests per 10 minutes per IP)
 const rateLimitMap = new Map<string, { count: number; firstTime: number }>();
@@ -161,6 +162,18 @@ Source Page: ${sourceUrl || '/'}`;
         isoNow
       );
     }
+
+    // 3. Dispatch real-time lead notification (Webhook / Email) asynchronously
+    dispatchLeadNotification({
+      contactId: contactId!,
+      parentName: parentName.trim(),
+      phone: phoneCheck.formattedDisplay,
+      studentName: studentName ? studentName.trim() : null,
+      courseInterest: courseInterest || 'Sainik School (AISSEE)',
+      preferredCallbackWindow: preferredCallbackWindow || null,
+      message: message ? message.trim() : null,
+      sourceUrl: sourceUrl || '/',
+    }).catch((err) => console.error('[NOTIFICATION ERROR]:', err));
 
     return NextResponse.json({
       success: true,

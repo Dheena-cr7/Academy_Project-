@@ -7,12 +7,15 @@ services:
       dockerfile: Dockerfile
     container_name: kalaivani_academy_web
     restart: unless-stopped
+    expose:
+      - '3000'
     ports:
+      # Optional: direct port access for local testing (disable in pure production behind Caddy)
       - '3000:3000'
     volumes:
-      # Persistent SQLite database volume mount
+      # Persistent SQLite database storage on host
       - ./data:/app/data
-      # Persistent backup storage volume mount
+      # Persistent backup storage on host
       - ./backups:/app/backups
     env_file:
       - .env.local
@@ -24,3 +27,30 @@ services:
       options:
         max-size: '10m'
         max-file: '3'
+
+  # Automated SSL / Reverse Proxy (Let's Encrypt / ZeroSSL)
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: kalaivani_academy_caddy
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      - DOMAIN_NAME=${DOMAIN_NAME:-localhost}
+      - ACME_EMAIL=${ACME_EMAIL:-admissions@kalaivanisainikcoachingcentre.org.in}
+    depends_on:
+      - web
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+volumes:
+  caddy_data:
+  caddy_config:

@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cinzel, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import AnnouncementBar from '@/components/AnnouncementBar';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ScrollProgressBar from '@/components/ScrollProgressBar';
-import ScrollReveal from '@/components/ScrollReveal';
-import UtmTracker from '@/components/UtmTracker';
-import MobileQuickBar from '@/components/MobileQuickBar';
+import PublicLayoutShell from '@/components/PublicLayoutShell';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -108,16 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <UtmTracker />
-        <ScrollProgressBar />
-        <ScrollReveal />
-        <AnnouncementBar />
-        <Header />
-        <main id="main-content" style={{ flex: 1 }}>
-          {children}
-        </main>
-        <Footer />
-        <MobileQuickBar />
+        <PublicLayoutShell>{children}</PublicLayoutShell>
       </body>
     </html>
   );

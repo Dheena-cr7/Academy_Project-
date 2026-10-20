@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import {
   Play,
   Pause,
@@ -640,10 +641,12 @@ export default function AcademyVideoShowcase() {
               }}
             >
               <div style={{ position: 'relative', height: '160px', overflow: 'hidden' }}>
-                <img
+                <Image
                   src={item.poster}
                   alt={item.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div
                   style={{

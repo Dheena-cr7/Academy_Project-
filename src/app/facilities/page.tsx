@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Breadcrumb from '@/components/Breadcrumb';
 import ContactCTAButtons from '@/components/ContactCTAButtons';
 import { Shield, Clock, BookOpen, Heart, Coffee, Sun, Compass } from 'lucide-react';
@@ -64,10 +65,13 @@ export default function FacilitiesPage() {
               </ul>
             </div>
             <div>
-              <img
+              <Image
                 src="/images/classroom_study_group.jpg"
                 alt="Well lit modern classroom with students engaged in mathematics lecture"
-                style={{ borderRadius: 'var(--radius-md)', width: '100%', boxShadow: 'var(--shadow-card)' }}
+                width={700}
+                height={466}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ borderRadius: 'var(--radius-md)', width: '100%', height: 'auto', boxShadow: 'var(--shadow-card)' }}
               />
             </div>
           </div>
@@ -89,10 +93,13 @@ export default function FacilitiesPage() {
               </ul>
             </div>
             <div style={{ order: 1 }}>
-              <img
+              <Image
                 src="/images/physical_training_ground.jpg"
                 alt="Students running and climbing obstacle course on athletic ground at sunrise"
-                style={{ borderRadius: 'var(--radius-md)', width: '100%', boxShadow: 'var(--shadow-card)' }}
+                width={700}
+                height={466}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ borderRadius: 'var(--radius-md)', width: '100%', height: 'auto', boxShadow: 'var(--shadow-card)' }}
               />
             </div>
           </div>
@@ -114,10 +121,13 @@ export default function FacilitiesPage() {
               </ul>
             </div>
             <div>
-              <img
+              <Image
                 src="/images/library_study_hall.jpg"
                 alt="Quiet study hall and reference library with warm wooden desks"
-                style={{ borderRadius: 'var(--radius-md)', width: '100%', boxShadow: 'var(--shadow-card)' }}
+                width={700}
+                height={466}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ borderRadius: 'var(--radius-md)', width: '100%', height: 'auto', boxShadow: 'var(--shadow-card)' }}
               />
             </div>
           </div>

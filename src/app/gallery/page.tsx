@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Breadcrumb from '@/components/Breadcrumb';
 import ContactCTAButtons from '@/components/ContactCTAButtons';
 import { Camera, Image as ImageIcon } from 'lucide-react';
@@ -70,16 +71,19 @@ export default function GalleryPage() {
               >
                 <div
                   style={{
+                    position: 'relative',
                     borderRadius: 'var(--radius-sm)',
                     overflow: 'hidden',
-                    maxHeight: '340px',
+                    height: '340px',
                     backgroundColor: 'var(--navy-primary)',
                   }}
                 >
-                  <img
+                  <Image
                     src={p.img}
                     alt={p.alt}
-                    style={{ width: '100%', height: '340px', objectFit: 'cover' }}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <div>

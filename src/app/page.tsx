@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Shield,
   BookOpen,
@@ -533,9 +534,12 @@ export default function HomePage() {
                   position: 'relative',
                 }}
               >
-                <img
+                <Image
                   src="/images/faculty_seminar_class.jpg"
                   alt="Senior academic master explaining mathematical theorem and geometric proofs to cadets at Kalaivani Sainik Academy"
+                  width={800}
+                  height={533}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </div>
@@ -1126,9 +1130,12 @@ export default function HomePage() {
           <div className="grid-4" style={{ gap: '24px' }}>
             <div className="mosaic-card scroll-fade-up stagger-1">
               <div className="mosaic-img-wrap">
-                <img
+                <Image
                   src="/images/classroom_study_group.jpg"
                   alt="Smart classrooms with individual desks"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div style={{ padding: '20px' }}>
@@ -1143,9 +1150,12 @@ export default function HomePage() {
 
             <div className="mosaic-card scroll-fade-up stagger-2">
               <div className="mosaic-img-wrap">
-                <img
+                <Image
                   src="/images/physical_training_ground.jpg"
                   alt="Physical training ground and obstacles"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div style={{ padding: '20px' }}>
@@ -1160,9 +1170,12 @@ export default function HomePage() {
 
             <div className="mosaic-card scroll-fade-up stagger-3">
               <div className="mosaic-img-wrap">
-                <img
+                <Image
                   src="/images/library_study_hall.jpg"
                   alt="Evening study hall and OMR clinic"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div style={{ padding: '20px' }}>
@@ -1177,9 +1190,12 @@ export default function HomePage() {
 
             <div className="mosaic-card scroll-fade-up stagger-4">
               <div className="mosaic-img-wrap">
-                <img
+                <Image
                   src="/images/majestic_academy_campus.jpg"
                   alt="Academy campus exterior and mountain foothills"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <div style={{ padding: '20px' }}>

@@ -40,7 +40,20 @@ export async function POST(req: NextRequest) {
       utmSource,
       utmMedium,
       utmCampaign,
+      website_hp,
+      confirm_contact_field,
+      honeypot,
     } = body;
+
+    // 0. Anti-bot Honeypot Trap
+    if (website_hp || confirm_contact_field || honeypot) {
+      console.warn(`[BOT BLOCKED] Automated bot submitted honeypot field from IP: ${ip}`);
+      // Silently return success to waste bot operator resources without corrupting DB
+      return NextResponse.json({
+        success: true,
+        message: 'Your admission enquiry has been safely received. A counsellor will call you shortly.',
+      });
+    }
 
     // Validate Parent Name
     if (!parentName || typeof parentName !== 'string' || parentName.trim().length < 2) {

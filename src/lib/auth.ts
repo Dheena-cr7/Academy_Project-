@@ -2,7 +2,15 @@ import crypto from 'crypto';
 import { cookies } from 'next/headers';
 
 const SESSION_COOKIE_NAME = 'ks_admin_session';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'kalaivani-sainik-coaching-secret-key-2026-secure';
+const DEFAULT_FALLBACK_SECRET = 'kalaivani-sainik-coaching-secret-key-2026-secure';
+const SESSION_SECRET = process.env.SESSION_SECRET || DEFAULT_FALLBACK_SECRET;
+
+if (process.env.NODE_ENV === 'production' && (!process.env.SESSION_SECRET || process.env.SESSION_SECRET === DEFAULT_FALLBACK_SECRET)) {
+  console.warn(
+    '\x1b[33m%s\x1b[0m',
+    '[SECURITY ALERT] Production server is running with the default SESSION_SECRET! Please configure a cryptographically secure SESSION_SECRET in your environment variables.'
+  );
+}
 
 export type UserRole = 'super_admin' | 'manager' | 'counsellor' | 'content_editor' | 'auditor';
 

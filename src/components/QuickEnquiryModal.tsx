@@ -116,6 +116,7 @@ export default function QuickEnquiryModal({
           consentGiven: consent,
           source: 'website',
           sourceUrl: typeof window !== 'undefined' ? window.location.pathname : '/',
+          website_hp: honeypot || undefined,
         }),
       });
 

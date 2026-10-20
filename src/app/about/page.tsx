@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Breadcrumb from '@/components/Breadcrumb';
 import ContactCTAButtons from '@/components/ContactCTAButtons';
 import { Shield, Target, Compass, Award, CheckCircle2, MapPin } from 'lucide-react';
@@ -73,9 +74,12 @@ export default function AboutPage() {
                   boxShadow: 'var(--shadow-card)',
                 }}
               >
-                <img
+                <Image
                   src="/images/classroom_study_group.jpg"
                   alt="Disciplined academic classroom mentoring at Kalaivani Sainik Academy"
+                  width={700}
+                  height={466}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                 />
               </div>

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kalaivani_academy_web
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      # Persistent SQLite database volume mount
+      - ./data:/app/data
+      # Persistent backup storage volume mount
+      - ./backups:/app/backups
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'

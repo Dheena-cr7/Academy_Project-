@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1b32" />
+      <stop offset="50%" stop-color="#071325" />
+      <stop offset="100%" stop-color="#040b17" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d77f" />
+      <stop offset="50%" stop-color="#c59b27" />
+      <stop offset="100%" stop-color="#8f6d14" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle Border -->
+  <circle cx="256" cy="256" r="240" fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="12" />
+
+  <!-- Inner Gold Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-dasharray="8 6" opacity="0.6" />
+
+  <!-- Heraldic Shield Body -->
+  <path d="M 256,90 L 370,140 C 370,270 320,360 256,410 C 192,360 142,270 142,140 Z" fill="#0f223d" stroke="url(#goldGrad)" stroke-width="8" />
+
+  <!-- Inner Shield Highlight -->
+  <path d="M 256,108 L 352,150 C 352,258 310,338 256,384 C 202,338 160,258 160,150 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3" opacity="0.5" />
+
+  <!-- Shield Top Stars -->
+  <g fill="url(#goldGrad)">
+    <polygon points="256,130 261,145 277,145 264,154 269,169 256,160 243,169 248,154 235,145 251,145" transform="scale(0.8) translate(64, 40)" />
+    <polygon points="216,145 220,157 232,157 222,164 226,176 216,169 206,176 210,164 200,157 212,157" transform="scale(0.7) translate(92, 70)" />
+    <polygon points="296,145 300,157 312,157 302,164 306,176 296,169 286,176 290,164 280,157 292,157" transform="scale(0.7) translate(126, 70)" />
+  </g>
+
+  <!-- KS Monogram -->
+  <text x="256" y="278" font-family="'Cinzel', Georgia, serif" font-size="96" font-weight="900" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="-3">KS</text>
+
+  <!-- ACADEMY Ribbon Text -->
+  <rect x="180" y="306" width="152" height="26" rx="4" fill="url(#goldGrad)" />
+  <text x="256" y="324" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#071325" text-anchor="middle" letter-spacing="4">ACADEMY</text>
+
+  <!-- Motto / Location -->
+  <text x="256" y="468" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="3" opacity="0.9">AMARAVATHINAGAR</text>
+</svg>

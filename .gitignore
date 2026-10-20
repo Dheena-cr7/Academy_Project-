@@ -9,13 +9,14 @@
 /build
 dist/
 
-# SQLite database files and journals
+# SQLite database files, journals and backups
 *.db
 *.db-journal
 *.db-wal
 *.db-shm
 *.sqlite
 *.sqlite3
+/backups/
 
 # TypeScript cache
 *.tsbuildinfo

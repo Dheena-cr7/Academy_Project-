@@ -116,7 +116,9 @@ export default function CadetEligibilityCalculator() {
     });
   };
 
-  const yearsOptions = Array.from({ length: 10 }, (_, i) => 2011 + i); // 2011 to 2020
+  const currentYear = new Date().getFullYear();
+  const startYear = 2000;
+  const yearsOptions = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i);
   const monthsList = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December',

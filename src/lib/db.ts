@@ -16,6 +16,9 @@ export function getDb(): Database.Database {
   const dbPath = path.join(dataDir, 'kalaivani.db');
   dbInstance = new Database(dbPath);
   dbInstance.pragma('journal_mode = WAL');
+  dbInstance.pragma('busy_timeout = 5000'); // Wait up to 5s if another transaction is writing
+  dbInstance.pragma('synchronous = NORMAL'); // 2-3x write speedup, safe in WAL mode
+  dbInstance.pragma('wal_autocheckpoint = 1000'); // Keep WAL file small (<4MB)
   dbInstance.pragma('foreign_keys = ON');
 
   initializeSchema(dbInstance);

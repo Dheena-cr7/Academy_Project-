@@ -17,6 +17,9 @@ if (!fs.existsSync(dataDir)) {
 const dbPath = path.join(dataDir, 'kalaivani.db');
 const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
+db.pragma('busy_timeout = 5000');
+db.pragma('synchronous = NORMAL');
+db.pragma('wal_autocheckpoint = 1000');
 db.pragma('foreign_keys = ON');
 
 console.log('Database initialized successfully at:', dbPath);
